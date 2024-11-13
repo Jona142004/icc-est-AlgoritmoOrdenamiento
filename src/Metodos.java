@@ -30,20 +30,65 @@ public class Metodos {
         return -1; // Valor no encontrado
     }
     
-    public int busquedaSecuencia(int[] arreglo, int valorBuscar){
-        for(int i = 0; i < arreglo.length; i++){
-            if(arreglo[i] == valorBuscar){
-                return i;
-            }
-
-        }
-        return -1;
-    }
+   
     public  void printArreglo(int[] arreglo) {
         for (int elem: arreglo){
             System.out.print(elem + " ");    
         }
     }
+    public class MetodoOrdenamiento {
+        public int[] sortBumbbleAva(int[] arreglo){
+            int n = arreglo.length;
+            boolean intercambio = false;
+    
+            for(int i =0; i < n; i++){
+                System.out.println("Pasada" +i );
+    
+                for(int j =0; j < n-1-i; j++){
+                    System.out.println("j="+j+"[j]="+ arreglo[j]+"j+1="+j+1+"[j+1]="+arreglo[j+1]);
+                    if(arreglo[j] > arreglo[j+1]){
+                        System.out.println("Si hay cambio");
+                    //  Intercambio
+                    int aux = arreglo[j];
+                    arreglo[j] = arreglo[j+1];
+                    arreglo [j+1] = aux;
+                    intercambio = true;
+            }
+        }
+        //Si no hubo ningun intercambio deberia finalizar el codigo si ya esta ordenado
+        if (!intercambio){
+            break;
+        }
+        }
+        return arreglo;
+    }
+    public void seleccion(int[] arreglo) {
+        int n = arreglo.length;
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arreglo[j] < arreglo[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int temp = arreglo[minIndex];
+            arreglo[minIndex] = arreglo[i];
+            arreglo[i] = temp;
+        }
+    }
+    public void insercion(int[] arreglo) {
+        int n = arreglo.length;
+        for (int i = 1; i < n; i++) {
+            int key = arreglo[i];
+            int j = i - 1;
+            while (j >= 0 && arreglo[j] > key) {
+                arreglo[j + 1] = arreglo[j];
+                j = j - 1;
+            }
+            arreglo[j + 1] = key;
+        }
+    }    
 
     
+}
 }
