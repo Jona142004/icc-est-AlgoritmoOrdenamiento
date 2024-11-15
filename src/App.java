@@ -1,26 +1,11 @@
-import java.util.Scanner;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
         Arreglos arreglo = new Arreglos();
-        Metodos metodos = new Metodos();
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("\nSeleccione una opción:");
-            System.out.println("1. Generar Arreglos aleatorios con diferente tamaño");
-            System.out.println("2. Ordenar por los 3 métodos y mostrar tiempos de ejecución");
-            System.out.println("3. Buscar valores usando búsqueda binaria normal y recursiva");
-            System.out.println("4. Salir");
-
-            int opcion = scanner.nextInt();
-
-            switch (opcion) {
-                case 1:
-                arreglo.printMessage("Arreglo de 10");
-                int[] arreglo10 = arreglo.generarArreglo10();
-                arreglo.imprimirArreglo(arreglo10);
+        arreglo.menuPrincipal();
         
+<<<<<<< HEAD
                 arreglo.printMessage("Arreglo de 100");
                 int[] arreglo100 = arreglo.generarArreglo100(arreglo10);
                 arreglo.imprimirArreglo(arreglo100);
@@ -62,6 +47,8 @@ public class App {
                     System.out.println("Opción no válida, por favor intente de nuevo.");
             }
         }        
+=======
+>>>>>>> fb867baaad43b2aeb215fe9c94b157b12be6dc5d
         }
 
     }
