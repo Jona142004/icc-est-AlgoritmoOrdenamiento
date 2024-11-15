@@ -1,7 +1,8 @@
 import java.util.Arrays;
 
 public class Metodos {
-     /******************************METODOS DE BUSQUEDA*********************************/
+
+     /***********METODOS DE BUSQUEDA************/
      public int busquedaBinaria(int[] copiaArreglo, int value) {
         int inicio = 0;
         int fin = copiaArreglo.length - 1;
@@ -34,6 +35,7 @@ public class Metodos {
         double executionTime = (endTime - startTime) / 1_000_000_000.0; //Conversion de ns a seg
         System.out.println("Número de iteraciones: " + cont);
         System.out.println("Con " + n + " valores el tiempo es de " + executionTime + " seg.");
+        posicionEncontrada(-1);
         return -1; // Valor no encontrado
     }
 
@@ -48,26 +50,32 @@ public class Metodos {
     public int busquedaBinariaRecursiva(int[] arreglo, int elemento, int inicio, int fin) {
         int[] copiaArreglo = Arrays.copyOf(arreglo, arreglo.length);
         int n = copiaArreglo.length;
-        
+
         long startTime = System.nanoTime();
-    
+
         int resultado = busquedaBinariaRecursivaAux(copiaArreglo, elemento, inicio, fin);
-    
+
         long endTime = System.nanoTime();
-    
+
         double totalTime = (endTime - startTime) / 1e9;
-    
+
         System.out.println("Con " + n + " valores el tiempo es de " + totalTime + " seg.");
+        if (resultado != -1) {
+            System.out.println("El número " + elemento + " se encuentra en la posición " + resultado);
+        } else {
+            System.out.println("El número " + elemento + " no se encuentra en el arreglo.");
+        }
     
         return resultado;
     }
     
     private int busquedaBinariaRecursivaAux(int[] arreglo, int elemento, int inicio, int fin) {
         if (inicio > fin) {
-            return -1;
+            return -1; // Elemento no encontrado
         }
-        int medio = inicio + (fin - inicio) / 2;
     
+        int medio = inicio + (fin - inicio) / 2;
+
         if (arreglo[medio] == elemento) {
             return medio;
         }
@@ -79,8 +87,8 @@ public class Metodos {
     }
     
     
-    /******************************METODOS DE ORDENAMIENTO*********************************/
-
+    
+    /***********METODOS DE ORDENAMIENTO************/
     public int[] sortBumbbleAva(int[] arreglo) {
         int[] copiaArreglo = Arrays.copyOf(arreglo, arreglo.length);
         int n = copiaArreglo.length;
@@ -108,7 +116,7 @@ public class Metodos {
         return copiaArreglo; 
     }
     
-    public int[] seleccion(int[] arreglo) {
+    public int[] seleccion(int[] arreglo) {    
         int[] copiaArreglo = Arrays.copyOf(arreglo, arreglo.length);
         int n = copiaArreglo.length;
         long startTime = System.nanoTime(); //Inicio
@@ -129,7 +137,6 @@ public class Metodos {
         System.out.println("Con " + n + " valores el tiempo es de " + totalTime + " seg.");
         return copiaArreglo;
     }
-    
 
     public int[] insercion(int[] arreglo) {
         // Crea una copia del arreglo original
@@ -150,5 +157,4 @@ public class Metodos {
         System.out.println("Con " + n + " valores el tiempo es de " + totalTime + " seg.");
         return copiaArreglo;
     }
-
 }
