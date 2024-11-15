@@ -71,6 +71,23 @@ public class Arreglos {
         return arreglo30000;
     }
     
+    // Validar los valores del tamaño y el arreglo
+    public int leerEnteroValido(String mensaje, boolean permitirNegativo) {
+        int numero;
+        do {
+            System.out.println(mensaje);
+            while (!scanner.hasNextInt()) {
+                System.out.println("Ingrese un entero válido"); //en el caso de que permitirNegativo sea true se ejcutaria solo una vez, por eso hasNextInt esta dentro de un bucle
+                scanner.next();
+            }
+            numero = scanner.nextInt();
+            if (!permitirNegativo && numero <= 0) {
+                System.out.println("Debe ingresar un entero mayor a 0");
+            }
+        } while (!permitirNegativo && numero <= 0);// A pesar de que permitirNegativo sea true, el bucle se ejecutara una vez
+        return numero;
+    }
+
 
     int[] arreglo10 = new int[10];
     int[] arreglo100 = new int[100];
@@ -80,6 +97,8 @@ public class Arreglos {
     int[] arreglo30000 = new int[30000];
 
     public void menuPrincipal(){
+        boolean validarOrden = false;
+        boolean ordenValido3 = false;
         while (true) {
             System.out.println("\nSeleccione una opción:");
             System.out.println("1. Generar Arreglos aleatorios con diferente tamaño");
@@ -87,7 +106,7 @@ public class Arreglos {
             System.out.println("3. Buscar valores usando búsqueda binaria normal y recursiva");
             System.out.println("4. Salir");
 
-            int opcion = scanner.nextInt();
+            int opcion = leerEnteroValido("Ingrese una opcion:", false);
 
             switch (opcion) {
                 case 1:
@@ -110,92 +129,106 @@ public class Arreglos {
                     arreglo30000 = generarArreglo30000(arreglo10000);
 
                     System.out.println("Arreglos generados.");
+                    validarOrden = true;
+
                     break;
 
                 case 2:
-                    //BurbujaAvanzada
-                    printMessage("");//Espacio entre la impresion de cada metodo
-                    printMessage("Método Burbuja con Ajustes");
-                    int[] copiaBurbuja10 = Arrays.copyOf(arreglo10, arreglo10.length);
-                    metodos.sortBumbbleAva(copiaBurbuja10);
+                    if(validarOrden){
+                        //BurbujaAvanzada
+                        printMessage("");//Espacio entre la impresion de cada metodo
+                        printMessage("Método Burbuja con Ajustes");
+                        int[] copiaBurbuja10 = Arrays.copyOf(arreglo10, arreglo10.length);
+                        metodos.sortBumbbleAva(copiaBurbuja10);
 
-                    int[] copiaBurbuja100 = Arrays.copyOf(arreglo100, arreglo100.length);
-                    metodos.sortBumbbleAva(copiaBurbuja100);
+                        int[] copiaBurbuja100 = Arrays.copyOf(arreglo100, arreglo100.length);
+                        metodos.sortBumbbleAva(copiaBurbuja100);
 
-                    int[] copiaBurbuja1000 = Arrays.copyOf(arreglo1000, arreglo1000.length);
-                    metodos.sortBumbbleAva(copiaBurbuja1000);
+                        int[] copiaBurbuja1000 = Arrays.copyOf(arreglo1000, arreglo1000.length);
+                        metodos.sortBumbbleAva(copiaBurbuja1000);
 
-                    int[] copiaBurbuja5000 = Arrays.copyOf(arreglo5000, arreglo5000.length);
-                    metodos.sortBumbbleAva(copiaBurbuja5000);
+                        int[] copiaBurbuja5000 = Arrays.copyOf(arreglo5000, arreglo5000.length);
+                        metodos.sortBumbbleAva(copiaBurbuja5000);
 
-                    int[] copiaBurbuja10000 = Arrays.copyOf(arreglo10000, arreglo10000.length);
-                    metodos.sortBumbbleAva(copiaBurbuja10000);
+                        int[] copiaBurbuja10000 = Arrays.copyOf(arreglo10000, arreglo10000.length);
+                        metodos.sortBumbbleAva(copiaBurbuja10000);
 
-                    int[] copiaBurbuja30000 = Arrays.copyOf(arreglo30000, arreglo30000.length);
-                    metodos.sortBumbbleAva(copiaBurbuja30000);
+                        int[] copiaBurbuja30000 = Arrays.copyOf(arreglo30000, arreglo30000.length);
+                        metodos.sortBumbbleAva(copiaBurbuja30000);
 
-                    //SELECCION
-                    printMessage("");
-                    printMessage("Método Selección");
-                    int[] copiaSeleccion10 = Arrays.copyOf(arreglo10, arreglo10.length);
-                    metodos.seleccion(copiaSeleccion10);
-                    
-                    int[] copiaSeleccion100 = Arrays.copyOf(arreglo100, arreglo100.length);
-                    metodos.seleccion(copiaSeleccion100);
-                    
-                    int[] copiaSeleccion1000 = Arrays.copyOf(arreglo1000, arreglo1000.length);
-                    metodos.seleccion(copiaSeleccion1000);
-                    
-                    int[] copiaSeleccion5000 = Arrays.copyOf(arreglo5000, arreglo5000.length);
-                    metodos.seleccion(copiaSeleccion5000);
-                    
-                    int[] copiaSeleccion10000 = Arrays.copyOf(arreglo10000, arreglo10000.length);
-                    metodos.seleccion(copiaSeleccion10000);
-                    
-                    int[] copiaSeleccion30000 = Arrays.copyOf(arreglo30000, arreglo30000.length);
-                    metodos.seleccion(copiaSeleccion30000);
-                    
-                    //INSERCION
-                    printMessage("");
-                    printMessage("Método Inserción");
-                    int[] copiaInsercion10 = Arrays.copyOf(arreglo10, arreglo10.length);
-                    arreglo10 = metodos.insercion(copiaInsercion10);
-                    
-                    int[] copiaInsercion100 = Arrays.copyOf(arreglo100, arreglo100.length);
-                    arreglo100 = metodos.insercion(copiaInsercion100);
-                    
-                    int[] copiaInsercion1000 = Arrays.copyOf(arreglo1000, arreglo1000.length);
-                    arreglo1000 = metodos.insercion(copiaInsercion1000);
-                    
-                    int[] copiaInsercion5000 = Arrays.copyOf(arreglo5000, arreglo5000.length);
-                    arreglo5000 = metodos.insercion(copiaInsercion5000);
-                    
-                    int[] copiaInsercion10000 = Arrays.copyOf(arreglo10000, arreglo10000.length);
-                    arreglo10000 = metodos.insercion(copiaInsercion10000);
-                    
-                    int[] copiaInsercion30000 = Arrays.copyOf(arreglo30000, arreglo30000.length);
-                    arreglo30000 = metodos.insercion(copiaInsercion30000);                    
-                    
+                        //SELECCION
+                        printMessage("");
+                        printMessage("Método Selección");
+                        int[] copiaSeleccion10 = Arrays.copyOf(arreglo10, arreglo10.length);
+                        metodos.seleccion(copiaSeleccion10);
+                        
+                        int[] copiaSeleccion100 = Arrays.copyOf(arreglo100, arreglo100.length);
+                        metodos.seleccion(copiaSeleccion100);
+                        
+                        int[] copiaSeleccion1000 = Arrays.copyOf(arreglo1000, arreglo1000.length);
+                        metodos.seleccion(copiaSeleccion1000);
+                        
+                        int[] copiaSeleccion5000 = Arrays.copyOf(arreglo5000, arreglo5000.length);
+                        metodos.seleccion(copiaSeleccion5000);
+                        
+                        int[] copiaSeleccion10000 = Arrays.copyOf(arreglo10000, arreglo10000.length);
+                        metodos.seleccion(copiaSeleccion10000);
+                        
+                        int[] copiaSeleccion30000 = Arrays.copyOf(arreglo30000, arreglo30000.length);
+                        metodos.seleccion(copiaSeleccion30000);
+                        
+                        //INSERCION
+                        printMessage("");
+                        printMessage("Método Inserción");
+                        int[] copiaInsercion10 = Arrays.copyOf(arreglo10, arreglo10.length);
+                        arreglo10 = metodos.insercion(copiaInsercion10);
+                        
+                        int[] copiaInsercion100 = Arrays.copyOf(arreglo100, arreglo100.length);
+                        arreglo100 = metodos.insercion(copiaInsercion100);
+                        
+                        int[] copiaInsercion1000 = Arrays.copyOf(arreglo1000, arreglo1000.length);
+                        arreglo1000 = metodos.insercion(copiaInsercion1000);
+                        
+                        int[] copiaInsercion5000 = Arrays.copyOf(arreglo5000, arreglo5000.length);
+                        arreglo5000 = metodos.insercion(copiaInsercion5000);
+                        
+                        int[] copiaInsercion10000 = Arrays.copyOf(arreglo10000, arreglo10000.length);
+                        arreglo10000 = metodos.insercion(copiaInsercion10000);
+                        
+                        int[] copiaInsercion30000 = Arrays.copyOf(arreglo30000, arreglo30000.length);
+                        arreglo30000 = metodos.insercion(copiaInsercion30000); 
+                        
+                        ordenValido3 = true;
+                    } else {
+                        printMessage("No puede ordenar arreglos sin generarlos primero");
+                    }
+                                     
                     break;
+
                 case 3:
-                    //BUSQUEDA BINARIA
-                    System.out.print("Ingrese el valor a buscar (entre 1 y 30000): ");
-                    int valor = scanner.nextInt();
-                    metodos.busquedaBinaria(arreglo10, valor);
-                    metodos.busquedaBinaria(arreglo100, valor);
-                    metodos.busquedaBinaria(arreglo1000, valor);
-                    metodos.busquedaBinaria(arreglo5000, valor);
-                    metodos.busquedaBinaria(arreglo10000, valor);
-                    metodos.busquedaBinaria(arreglo30000, valor);
-                    //BUSQUEDA BINARIA RECURSIVA
-                    metodos.busquedaBinariaRecursiva(arreglo10, valor, 0, 10);
-                    metodos.busquedaBinariaRecursiva(arreglo100, valor, 0, 100);
-                    metodos.busquedaBinariaRecursiva(arreglo1000, valor, 0, 1000);
-                    metodos.busquedaBinariaRecursiva(arreglo5000, valor, 0, 5000);
-                    metodos.busquedaBinariaRecursiva(arreglo10000, valor, 0, 10000);
-                    metodos.busquedaBinariaRecursiva(arreglo30000, valor, 0, 30000);
+                    if(ordenValido3){
+                        //BUSQUEDA BINARIA
+                        System.out.print("Ingrese el valor a buscar (entre 1 y 30000): ");
+                        int valor = leerEnteroValido("Ingrese el valor a buscar:", true);
+                        metodos.busquedaBinaria(arreglo10, valor);
+                        metodos.busquedaBinaria(arreglo100, valor);
+                        metodos.busquedaBinaria(arreglo1000, valor);
+                        metodos.busquedaBinaria(arreglo5000, valor);
+                        metodos.busquedaBinaria(arreglo10000, valor);
+                        metodos.busquedaBinaria(arreglo30000, valor);
+                        //BUSQUEDA BINARIA RECURSIVA
+                        metodos.busquedaBinariaRecursiva(arreglo10, valor, 0, 10);
+                        metodos.busquedaBinariaRecursiva(arreglo100, valor, 0, 100);
+                        metodos.busquedaBinariaRecursiva(arreglo1000, valor, 0, 1000);
+                        metodos.busquedaBinariaRecursiva(arreglo5000, valor, 0, 5000);
+                        metodos.busquedaBinariaRecursiva(arreglo10000, valor, 0, 10000);
+                        metodos.busquedaBinariaRecursiva(arreglo30000, valor, 0, 30000);
+                    } else {
+                        System.out.println("No puede ejecutar busqueda binaria sin haber creado y orenado los arreglos");
+                    }
 
                     break;
+                    
                 case 4:
                     System.out.println("Saliendo del programa.");
                     scanner.close();
