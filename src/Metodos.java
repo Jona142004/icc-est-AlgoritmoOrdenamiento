@@ -147,5 +147,4 @@ public class Metodos {
         double totalTime = (endTime - startTime) / 1_000_000_000.0;
         System.out.println("Con " + n + " valores el tiempo es de " + totalTime + " seg.");
     }
-
 }
