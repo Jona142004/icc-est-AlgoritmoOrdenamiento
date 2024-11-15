@@ -6,8 +6,6 @@ public class Arreglos {
     Scanner scanner = new Scanner(System.in);
     Metodos metodos = new Metodos();
 
-    //Variables
-
     public void printMessage(String message){
         System.out.println(message);
     }
@@ -140,9 +138,7 @@ public class Arreglos {
                     printMessage("");
                     printMessage("Método Inserción");
                     metodos.insercion(arreglo10);
-                    imprimirArreglo(arreglo10);
                     metodos.insercion(arreglo100);
-                    imprimirArreglo(arreglo100);
                     metodos.insercion(arreglo1000);
                     metodos.insercion(arreglo5000);
                     metodos.insercion(arreglo10000);

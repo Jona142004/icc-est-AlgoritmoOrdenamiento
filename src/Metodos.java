@@ -18,6 +18,7 @@ public class Metodos {
                 double executionTime = (endTime - startTime) / 1_000_000_000.0; //Conversion de ns a seg
                 System.out.println("Número de iteraciones: " + cont);
                 System.out.println("Con " + n + " valores el tiempo es de " + executionTime + " seg.");
+                posicionEncontrada(medio);
                 return medio;
             }
     
@@ -107,7 +108,7 @@ public class Metodos {
         return copiaArreglo; 
     }
     
-    public void seleccion(int[] arreglo) {
+    public int[] seleccion(int[] arreglo) {
         int[] copiaArreglo = Arrays.copyOf(arreglo, arreglo.length);
         int n = copiaArreglo.length;
         long startTime = System.nanoTime(); //Inicio
@@ -126,10 +127,11 @@ public class Metodos {
         long endTime = System.nanoTime(); //Fin
         double totalTime = (endTime - startTime) / 1_000_000_000.0; //Conversion de ns a seg
         System.out.println("Con " + n + " valores el tiempo es de " + totalTime + " seg.");
+        return copiaArreglo;
     }
     
 
-    public void insercion(int[] arreglo) {
+    public int[] insercion(int[] arreglo) {
         // Crea una copia del arreglo original
         int[] copiaArreglo = Arrays.copyOf(arreglo, arreglo.length);
         int n = copiaArreglo.length;
@@ -146,6 +148,7 @@ public class Metodos {
         long endTime = System.nanoTime();
         double totalTime = (endTime - startTime) / 1_000_000_000.0;
         System.out.println("Con " + n + " valores el tiempo es de " + totalTime + " seg.");
+        return copiaArreglo;
     }
 
 }
